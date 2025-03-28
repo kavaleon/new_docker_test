@@ -19,7 +19,7 @@ services:
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: testdb
+      POSTGRES_DB: dbtest
     volumes:
       - postgres_data1:/var/lib/postgresql/data
 
