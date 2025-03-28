@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   web:
-    build: ./app    #указываем где лежит докер-файл
+    build: ./new_docker_test    #указываем где лежит докер-файл
     ports:
       - "5000:5000"
     depends_on:
