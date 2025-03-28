@@ -12,8 +12,8 @@ def get_db_connection():
     )
     return conn
 
-conn = get_db_connection()
-# conn = psycopg2.connect('postgresql://user:password@127.0.0.1:5432/dbtest')
+# conn = get_db_connection()
+conn = psycopg2.connect('postgresql://user:password@127.0.0.1:5432/dbtest')
 
 
 cursor = conn.cursor()
@@ -57,4 +57,4 @@ def user_profile(user_id):
     return render_template('user_profile.html', user=user, visits=visits)
 
 
-app.run(debug=True, port=5500, host='127.0.0.1')
+app.run(debug=True, port=5000, host='127.0.0.1')
