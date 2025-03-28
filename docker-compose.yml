@@ -2,12 +2,12 @@ version: '3.8'
 
 services:
   web:
-    build: ./new_docker_test    #указываем где лежит докер-файл
+    build: ./app    #указываем где лежит докер-файл
     ports:
-      - "5000:5000"
-    depends_on:
+      - "5500:5500"
+    depends_on:    # гарантирует что сначала будут запущены редис и постгрес
       - redis
-      - postgres
+      - db
 
   redis:
     image: redis:alpine

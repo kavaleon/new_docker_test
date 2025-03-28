@@ -3,7 +3,17 @@ import redis
 from flask import Flask, render_template
 import os
 
-conn = psycopg2.connect('postgresql://user:password@127.0.0.1:5432/dbtest')
+def get_db_connection():
+    conn = psycopg2.connect(
+        host="db",    #название из docker-compose
+        database="dbtest",
+        user="user",
+        password="password"
+    )
+    return conn
+
+conn = get_db_connection()
+# conn = psycopg2.connect('postgresql://user:password@127.0.0.1:5432/dbtest')
 
 
 cursor = conn.cursor()
@@ -42,7 +52,7 @@ def user_profile(user_id):
     cursor.close()
 
     cache.incr(f'user:{user_id}:visits')
-    visits = cache.get(f'user:{user_id}:visits')
+    visits = cache.get(f'user:{user_id}:visits').decode('ascii')
 
     return render_template('user_profile.html', user=user, visits=visits)
 
