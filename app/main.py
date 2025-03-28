@@ -12,8 +12,8 @@ def get_db_connection():
     )
     return conn
 
-# conn = get_db_connection()
-conn = psycopg2.connect('postgresql://user:password@127.0.0.1:5432/dbtest')
+conn = get_db_connection()
+# conn = psycopg2.connect('postgresql://user:password@127.0.0.1:5432/dbtest')
 
 
 cursor = conn.cursor()
